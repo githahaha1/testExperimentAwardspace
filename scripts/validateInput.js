@@ -1,5 +1,9 @@
-var regExp_firstname = /^[A-Za-z \s]{1,8}$/;
-var regExp_email = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+var regExp_firstname = /^[A-Za-z][A-Za-z\'\-\ ]{1,29}$/;
+//var regExp_email = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+var regExp_email1 = /^[A-Za-z0-9]+[A-Za-z0-9._+-]*@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+var regExp_email2 =/^(?!.*[\.]{2,}).*$/;
+
+
 //The strong password must be eight characters or longer,must contain at least 1 lowercase,1 uppercase,1 numeric and one specical character
 var regExp_strongpassword =/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
 //The medium password must be six characters or longer,has at least one lowercase and one uppercase, or one alphabetical and one number
@@ -49,7 +53,7 @@ function checkInput(inEleId) {
             validInput= regExp_firstname.test(inpObj.value);
             break;    
         case "email":
-            validInput= regExp_email.test(inpObj.value);
+            validInput= regExp_email1.test(inpObj.value)&&regExp_email2.test(inpObj.value);
             break;
         case "BirthYear":
             validInput=parseInt(inpObj.value)>=1878&&parseInt(inpObj.value)<=2000;
